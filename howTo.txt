@@ -1,0 +1,14 @@
+
+# GENERAR PROYECTO NUEVO:
+En consola, en ubicación deseada ejecutar: django-admin startproject nombre_proyecto
+(ver que en este caso todavía no se crea en entorno virtual)
+
+Ingresar a la carpeta generada (con el nombre del "nuevo_proyecto") y ejecutar: python manage.py migrate
+
+Luego ejecutar el servidor "de pruebas": python manage.py runserver
+
+PATRON MVT: Model View Template
+
+luego en "vistas" importar "from django.http import HttpResponse".
+Generar funciones que recibirán el parámetro "request" y retornarán un HttpResponse("algo").
+Finalmente en URL se debe configurar el path donde se mostrará la funcion generada (recordar importar el archivo vista en URL)

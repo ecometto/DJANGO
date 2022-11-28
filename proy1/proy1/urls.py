@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from proy1.views import saludo, despedida, fecha, edad
+from proy1.views import saludo, despedida, fecha, edad , pl_externa, fecha_actual
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,8 @@ urlpatterns = [
     path('chau/<nombre>/<int:edad>', despedida ),
     path('fecha/', fecha ),
     path('edad/<int:edad>/<int:anio>', edad ),
+    path('externa', pl_externa ),
+    path('factual', fecha_actual ),
+   
     
 ]
