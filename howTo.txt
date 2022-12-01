@@ -1,3 +1,6 @@
+para usar django "pip install django"
+
+PATRON MVT: Model View Template
 
 # GENERAR PROYECTO NUEVO:
 En consola, en ubicación deseada ejecutar: django-admin startproject nombre_proyecto
@@ -7,8 +10,37 @@ Ingresar a la carpeta generada (con el nombre del "nuevo_proyecto") y ejecutar: 
 
 Luego ejecutar el servidor "de pruebas": python manage.py runserver
 
-PATRON MVT: Model View Template
 
-luego en "vistas" importar "from django.http import HttpResponse".
+# CONFIGURANDO VISTAS Y RUTAS
+crear archivo views.py.  importar los siguientes modulos: 
+from django.shorcuts import render 
+luego return render(request, 'plantilla.html', params in dictionary)
+-obsoleto- from django.http import HttpResponse
+-obsoleto -from django.template import loader
+
 Generar funciones que recibirán el parámetro "request" y retornarán un HttpResponse("algo").
-Finalmente en URL se debe configurar el path donde se mostrará la funcion generada (recordar importar el archivo vista en URL)
+    def fecha_actual(request):
+        plantilla = loader.get_template('documento.html')
+        doc = plantilla.render({"nombre":"mi_nombre", "usuario":"my_usuario"})   #(aqui se "pasan" variables al documento para ser usados con jinja)
+        return HttpResponse(doc)
+(tener en cuenta de agregar la ruta absoluta en "DIRS" en "TEMPLATES" del archivo de configuración)
+ej: 'DIRS': ["C:/xampp/htdocs/PROGRAMACION/DJANGO/proy1/proy1/templates"],
+
+Finalmente en URL se debe configurar el path donde se mostrará la funcion generada (recordar importar el archivo vista y la funcion en URL)
+
+
+
+# ------ USO DE PLANTILLAS Y ARCHIVOS ESTATICOS --------------
+* para utilizar plantillas se usa "extend" al inicio del documento.
+--- {% extends 'base.html' %} ---
+
+* para incrustar codigo html dentro del documento se usa "include".
+--- {% include 'components/nav.html' %} ---
+
+* para usar ARCHIVOS ESTATICOS (css, js, img), se debe completar el siguiente renglon en settings:
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'proy1/static'),)
+Además se debe agregar la etiqueta load static al inicio del documento donde se requieren los statics
+---- {% load static %} ---
+y finalmente agregar/llamar al static desde el documento:
+---Por ejemplo: href="{% static 'styles.css' %}" ---
+

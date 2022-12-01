@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django.template import loader
+from django.shortcuts import render
 
 
 def saludo(request, nombre, edad):
@@ -41,3 +42,6 @@ def fecha_actual(request):
     plt=loader.get_template('fecha_actual.html')
     doc = plt.render({"dia":dia, "mes":mes, "anio": year})
     return HttpResponse(doc)
+
+def advanceView(request):
+    return render(request, 'advance.html', {"nombre": "Edgardo", "edad": 40} )
