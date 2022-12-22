@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{titulo}}
+{% endblock title %}
+
+{% block content %}
+
+<h3 class="text-center m-4">BIENVENIDO!! Seleccione del menú superior la accion que desea realizar</h3>
+
+<div class="img-container d-flex justify-content-center align-items-center">
+    <img src="{% static 'img/inventario.jpg' %}" alt="inventario" width="600px">
+</div>
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+body{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   height: 100vh;
+}
+
+header{
+    background: linear-gradient(90deg,  rgba(220,220,220,0.5) 5%,  steelblue 20%, steelblue 80%,  rgba(220,220,220,0.5) 95%);
+   
+}
+
+
+h1{
+    font-size: 25px;
+}
+
+ul, li{
+    list-style: none;
+    margin-right: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(20,20,20);
+}
+
+.actions{
+    background-color: rgba(40,40,40,0.5);
+    padding: 10px 0px;
+    margin: 0px 0px 0px 0px;
+    font-weight: bolder;
+}
+
+.actions li{
+    border-right: solid 1px black;
+    padding: 0px 10px;
+}

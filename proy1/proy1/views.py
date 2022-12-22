@@ -45,3 +45,5 @@ def fecha_actual(request):
 
 def advanceView(request):
     return render(request, 'advance.html', {"nombre": "Edgardo", "edad": 40} )
+
+

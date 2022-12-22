@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{titulo}}
+{% endblock title %}
+
+{% block content %}
+
+<div class="row">
+   <div class="col-md-4">
+      <h4 class="my-3 text-center">Nuevo articulo</h4>
+      <div class="card bg-light">
+         <div class="card-body">
+            <form action="">
+               <input class="form-control" name="descripcion" type="text" placeholder="Ingrese descripcion"> <br>
+               <select class="form-select" name="umedida">
+                  <option value="" disabled selected>U. de medida</option>
+                  <option value="1">Unidad</option>
+                  <option value="2">Metro</option>
+                  <option value="3">Litro</option>
+               </select> <br>
+               <textarea class="form-control" name="detalles" id="" cols="30" rows="6" placeholder="detalles"></textarea> <br>
+             <div class="text-center">  <button class="btn btn-success">Registrar</button></div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <div class="col-md-8">
+      <h4 class="my-3 text-center">Listado de Articulos</h4>
+      <table class="table table-light table-striped">
+         <thead class="thead-light">
+            <tr>
+               <th>#</th>
+               <th>Descripcion</th>
+               <th>Stock</th>
+               <th>U. Medida</th>
+               <th>Acciones</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>1</td>
+               <td>un articulo determinado</td>
+               <td>35</td>
+               <td>metros</td>
+               <td> <button class="btn btn-warning btn-sm">Edit</button> <button
+                     class="btn btn-danger btn-sm">Delete</button></td>
+            </tr>
+            <tr>
+               <td>1</td>
+               <td>un articulo determinado</td>
+               <td>35</td>
+               <td>metros</td>
+               <td> <button class="btn btn-warning btn-sm">Edit</button> <button
+                     class="btn btn-danger btn-sm">Delete</button></td>
+            </tr>
+            <tr>
+               <td>1</td>
+               <td>un articulo determinado</td>
+               <td>35</td>
+               <td>metros</td>
+               <td> <button class="btn btn-warning btn-sm">Edit</button> <button
+                     class="btn btn-danger btn-sm">Delete</button></td>
+            </tr>
+         </tbody>
+      </table>
+
+   </div>
+</div>
+
+{% endblock content %}

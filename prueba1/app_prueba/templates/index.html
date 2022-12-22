@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+principal
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="row text-center">
+    <div class="col-md-4 px-4">
+        <h3 class="text-center my-2">Formulario de contacto</h3>
+        <div class="card">
+            <div class="card-body">
+                <form action="">
+                    <input type="text" class="form-control" name="nombre" id="" placeholder="ingrese Nombre"> <br>
+                    <input type="text" class="form-control" name="apellido" id="" placeholder="ingrese Apellido"> <br>
+                    <input type="number" class="form-control" name="edad" id="" placeholder="Edad"> <br>
+                    <button type="submit" class="btn btn-success col-md-6 offset-md-3 col-12">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 px-4">
+        <h3 class="text-center my-2">Tabla de contacto</h3>
+
+        <table class="table table-secondary table-striped">
+            <thead class="">
+                <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Juan</td>
+                    <td>Perez</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>jose</td>
+                    <td>lopez</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+{% endblock content %}
