@@ -1,5 +1,18 @@
 from django.shortcuts import render
+import sqlite3
 
+# con=sqlite3.connect('db.sqlite3')
+# cur=con.cursor()
+# sql="select * from app_inventario_articulos"
+# cur.execute(sql)
+# data=cur.fetchall()
+# print(data)
+# print(type(data))
+# con.close()
+
+
+
+from app_inventario.models import Articulos
 # Create your views here.
 
 def index(request):
@@ -7,7 +20,11 @@ def index(request):
 
 
 def articulos(request):
-    return render(request, 'articulos.html', {"titulo":"ABM- Articulos"})
+    articulos = Articulos.objects.all()
+
+ 
+
+    return render(request, 'articulos.html', {"titulo":"ABM- Articulos", "data":data})
 
 
 def movimientos(request):

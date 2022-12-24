@@ -17,12 +17,13 @@
                <input class="form-control" name="descripcion" type="text" placeholder="Ingrese descripcion"> <br>
                <select class="form-select" name="umedida">
                   <option value="" disabled selected>U. de medida</option>
-                  <option value="1">Unidad</option>
-                  <option value="2">Metro</option>
-                  <option value="3">Litro</option>
+                  <option value="unidad">Unidad</option>
+                  <option value="metro">Metro</option>
+                  <option value="litro">Litro</option>
                </select> <br>
-               <textarea class="form-control" name="detalles" id="" cols="30" rows="6" placeholder="detalles"></textarea> <br>
-             <div class="text-center">  <button class="btn btn-success">Registrar</button></div>
+               <textarea class="form-control" name="detalles" id="" cols="30" rows="6"
+                  placeholder="detalles"></textarea> <br>
+               <div class="text-center"> <button class="btn btn-success">Registrar</button></div>
             </form>
          </div>
       </div>
@@ -41,30 +42,21 @@
             </tr>
          </thead>
          <tbody>
+            {% for a in data %}
+
+            {{a}}
+               
             <tr>
-               <td>1</td>
-               <td>un articulo determinado</td>
+               <td>{{a.0}}</td>
+               <td>{{a.1}}</td>
                <td>35</td>
-               <td>metros</td>
+               <td>{{a.2}}</td>
                <td> <button class="btn btn-warning btn-sm">Edit</button> <button
                      class="btn btn-danger btn-sm">Delete</button></td>
             </tr>
-            <tr>
-               <td>1</td>
-               <td>un articulo determinado</td>
-               <td>35</td>
-               <td>metros</td>
-               <td> <button class="btn btn-warning btn-sm">Edit</button> <button
-                     class="btn btn-danger btn-sm">Delete</button></td>
-            </tr>
-            <tr>
-               <td>1</td>
-               <td>un articulo determinado</td>
-               <td>35</td>
-               <td>metros</td>
-               <td> <button class="btn btn-warning btn-sm">Edit</button> <button
-                     class="btn btn-danger btn-sm">Delete</button></td>
-            </tr>
+
+            {% endfor %}
+            
          </tbody>
       </table>
 
