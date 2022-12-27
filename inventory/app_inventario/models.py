@@ -17,4 +17,10 @@ class Articulos(models.Model):
     
     # def __str__(self):
     #     return self.descripcion
+    
+class Movimientos(models.Model):
+    item=models.PositiveSmallIntegerField()
+    art_id = models.ForeignKey(Articulos, on_delete=models.CASCADE)    
+    tipo_movimiento = models.CharField(max_length=50, blank=False)
+    
 

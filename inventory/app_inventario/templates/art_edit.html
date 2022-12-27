@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ titulo }}
+{% endblock title %}
+
+
+
+{% block content %}
+
+{{ unidad }}
+
+<div class="row">
+   <div class="col-md-6 offset-md-3">
+      <h4 class="my-1 text-center">EDITANDO..</h4>
+      <div class="card bg-light">
+         <div class="card-body">
+            <form action="" method="POST"> {% csrf_token %}
+
+               <input type="hidden" class="form-control" name="id"  value="{{data.id}}"> <br>
+
+               <input class="form-control" name="descripcion" type="text" value="{{data.descripcion}}"> <br>
+               
+               <select class="form-select" name="umedida">
+                  {% if unidad == 1 %}
+                  <option value="1" selected>Unidad</option>
+                  {% else%}
+                  <option value="1" >Unidad</option>
+                  {% endif %}
+                  {% if unidad == 2 %}
+                  <option value="2" selected>Metro</option>
+                  {% else%}
+                  <option value="2">Metro</option>
+                  {% endif %}
+                  {% if unidad == 3 %}
+                  <option value="3" selected>Litro</option>
+                  {% else%}
+                  <option value="3">Litro</option>
+                  {% endif %}                            
+               </select> <br>
+
+               <textarea class="form-control" name="detalles" id="" cols="30" rows="4">{{data.descripcion}}</textarea>
+               <br>
+
+               <input type="hidden" name="cantidad" id="" value="{{data.cantidad}}">
+               
+               <div class="text-center"> 
+                  <button onclick="return confirm('seguro que sedea actualizar?')" class="btn btn-success">Registrar</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+
+
+   {% endblock %}
