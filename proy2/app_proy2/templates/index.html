@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ titulo }}
+{% endblock title %}
+
+
+{% block content %}
+    <h1 class="text-center">this is index from app</h1>
+
+   <div class="card">
+   
+    <h3 class="text-center">Ingreso nueva persona</h3>
+
+    <div class="card-body row ">
+        <form class="col-md-6 offset-md-3 bg-secondary p-4 rounded" action="/cargar" method="POST" > {% csrf_token %} 
+            <div class="mb-2">
+                <label class="form-label" for="">Nombre</label>
+                <input class="form-control" type="text" name="nombre" id="">
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="">Apellido</label>
+                <input class="form-control" type="text" name="apellido" id="">
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="">Edad</label>
+                <input class="form-control" type="number" name="edad" id="">
+            </div>
+            <div class="mb-2 text-center mt-4">
+                <button class="btn btn-primary " type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+   </div>
+
+   <div>
+    <div class="table-responsive">
+        <table class="table table-primary table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Edad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if lista %}
+                    {% for cada in lista %}
+                    
+                    <tr class="">
+                        <td>{{cada.nombre}}</td>
+                        <td>{{cada.apellido}}</td>
+                        <td>{{cada.edad}}</td>
+                    </tr>
+                    
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    
+   </div>
+
+
+{% endblock content %}

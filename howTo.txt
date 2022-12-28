@@ -1,4 +1,8 @@
 
+primero instalar django con "pip install django"
+(para verificar que se instaló, ingresar a consola --> type python --> import django  --> django.VERSION)
+
+
 # GENERAR PROYECTO NUEVO:
 En consola, en ubicación deseada ejecutar: django-admin startproject nombre_proyecto
 (ver que en este caso todavía no se crea en entorno virtual)

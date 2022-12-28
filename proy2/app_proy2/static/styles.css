@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    justify-content: end;
+    background-color: azure;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul,
+nav li {
+    list-style: none;
+}
+
+nav li {
+    padding: 10px;
+    margin: 5px 50px;
+    background-color: red;
+    border-radius: 5px;
+}
