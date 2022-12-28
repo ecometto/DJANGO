@@ -1,14 +1,17 @@
-from django.shortcuts import render, HttpResponse, redirect
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponse
+from django.db.models import Max
+from datetime import datetime
 import sqlite3
 
-from app_inventario.models import Articulos
+from app_inventario.models import Articulos, Movimientos1
 # Create your views here.
 
 def index(request):
     return render(request, 'index.html', {"titulo":"principal"})
 
-
+# funciones de ARTICULOS ---------------------
+#Ver. Se incluyen en URLS.py
 def articulos(request):
     if request.method == "POST":
         desc=request.POST['descripcion']
@@ -24,20 +27,6 @@ def articulos(request):
     }
     return render(request, 'articulos.html', context)
 
-
-def movimientos(request):
-    articulos = Articulos.objects.all()
-    context={
-        "titulo":"movimientos",
-        "articulos":articulos
-    }
-    return render(request, 'movimientos.html', context)
-
-def listados(request):
-    return render(request, 'listados.html', {"titulo":"listados"})
-
-# funciones de ARTICULOS ---------------------
-#Ver. Se incluyen en URLS.py
 def art_edit(request, id):
     if request.method == 'POST':
         id=request.POST['id']
@@ -64,10 +53,40 @@ def art_edit(request, id):
 
 def art_delete(request, id):
     art_to_del = Articulos.objects.get(id=id)
+    print(art_to_del.descripcion)
     art_to_del.delete()
     return redirect(articulos)
 
 
+# funciones de MOVIMIENTOS ---------------------
+def movimientos(request):
+    ultimoMov=Movimientos1.objects.all().aggregate(Max('id'))
+    if ultimoMov['id__max'] == None:
+        ultimoMov = 0
+    else:
+        ultimoMov= ultimoMov['id__max']
+        
+    fecha=datetime.now().strftime("%d/%m/%Y")
+    articulos = Articulos.objects.all()
+    context={
+        "titulo":"movimientos",
+        "ultimoMov":ultimoMov,
+        "fecha":fecha,
+        "articulos":articulos
+    }
+    return render(request, 'movimientos.html', context)
+
+def getOneArticle(request, id):
+    art=Articulos.objects.filter(id=id).values('id','descripcion','umedida_id')
+    print(art)
+    lista=list(art)
+    print(lista)
+
+        
+    return JsonResponse({'articulo':lista[0]})
 
 
-       
+
+
+def listados(request):
+    return render(request, 'listados.html', {"titulo":"listados"})

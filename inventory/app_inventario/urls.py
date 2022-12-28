@@ -17,10 +17,14 @@ from django.contrib import admin
 from django.urls import path
 
 
-from .views import art_delete, art_edit, getDatosArticulo
+from .views import art_delete, art_edit, getOneArticle
 
 urlpatterns = [
     path('articulos/delete/<int:id>', art_delete),
     path('articulos/edit/<int:id>', art_edit),
+    path('movimientos/getOneArticle/<int:id>', getOneArticle),
+
+    
+    
 
 ]

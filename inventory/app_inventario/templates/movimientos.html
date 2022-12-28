@@ -12,13 +12,20 @@
         <h4 class="text-center my-2">REGISTRO DE MOVIMIENTOS</h4>
 
         <div class="row bg-light border p-2 my-2">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-4">
                 <label for="">N° movimiento</label>
-                <input type="number" name="movId" disabled>
+                <input class="form-control" type="number" name="movId" id="movId" value="{{ultimoMov}}" disabled>
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-4">
                 <label for="">Fecha</label>
-                <input type="datetime" name="date" disabled>
+                <input class="form-control" type="datetime" name="movDate" id="movDate" value="{{fecha}}">
+            </div>
+            <div class="mb-3 col-4">
+                <label for="">Tipo</label>
+                <select class="form-select" name="tipoMov" id="tipoMov">
+                    <option value="egreso">Egreso</option>
+                    <option value="ingreso">Ingreso</option>
+                </select>
             </div>
             <div class="col-12">
                 <label for="">Detalles/Observaciones</label>
@@ -30,7 +37,7 @@
             <div class="row my-2 mx-0  border-bottom">
                 <div class="mb-3 col-7 offset-1">
                     <label for="">Articulo</label>
-                    <select class="form-select" name="articulo" id="articulo" onchange="buscargDatos()">
+                    <select class="form-select" name="articulo" id="selectArticulo">
                         <option value="">Seleccione un articulo</option>
                         {% for cada in articulos %}
                             <option value="{{cada.id}}" >{{cada.descripcion}} -- {{cada.umedida}}</option>
@@ -79,3 +86,7 @@
 </div>
 
 {% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/appMov.js' %}"></script>
+{% endblock scripts %}
