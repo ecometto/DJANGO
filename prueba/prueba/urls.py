@@ -1,4 +1,4 @@
-"""proy1 URL Configuration
+"""prueba URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -16,17 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from proy1.views import saludo, despedida, fecha, edad , pl_externa, fecha_actual, advanceView
+from pruebaApp.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hola/<nombre>/<int:edad>', saludo ),
-    path('chau/<nombre>/<int:edad>', despedida ),
-    path('fecha/', fecha ),
-    path('edad/<int:edad>/<int:anio>', edad ),
-    path('externa', pl_externa ),
-    path('factual', fecha_actual ),
-    path('advance', advanceView ),
-   
-    
+    path('', index),
+
 ]

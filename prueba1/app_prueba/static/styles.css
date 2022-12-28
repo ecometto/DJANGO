@@ -1,0 +1,22 @@
+nav{
+    background-color: brown;
+    justify-content:center !important;
+}
+
+
+ul, li{
+    list-style: none;
+}
+
+ul{
+    display: flex;
+    justify-content: end;
+    margin-left: auto !important;
+}
+
+li{
+    margin: 10px 30px;
+    padding: 2px;
+    background-color: orange;
+    border-radius: 5px;
+}

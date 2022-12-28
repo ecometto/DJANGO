@@ -1,0 +1,81 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{titulo}}
+{% endblock title %}
+
+{% block content %}
+
+<div class="row">
+   <div class="col-md-12">
+      <h4 class="my-1 text-end" id="h4Title" style="cursor:pointer;">
+         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+            <path
+               d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+         </svg>
+         Nuevo articulo..
+      </h4>
+      <div class="col-md-6 offset-md-3">
+         <div class="card bg-light d-none" id="formNewArt">
+            <div class="card-body">
+               <form action="" method="POST"> {% csrf_token %}
+                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese descripcion"> <br>
+                  <select class="form-select" name="umedida">
+                     <option value="" disabled selected>U. de medida</option>
+                     <option value="1">Unidad</option>
+                     <option value="2">Metro</option>
+                     <option value="3">Litro</option>
+                  </select> <br>
+                  <textarea class="form-control" name="detalles" id="" cols="30" rows="4"
+                     placeholder="detalles"></textarea> <br>
+                  <input class="form-control" type="number" name="cantidad" id="" placeholder="cantidad">
+                  <div class="text-center mt-3">
+                     <button class="btn btn-success">Registrar</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row" id="divTable">
+   <div class="col-md-12">
+      <h4 class="my-3 text-center">Listado de Articulos</h4>
+      <table class="table table-light table-striped mb-4" id="myTable">
+         <thead class="thead-light">
+            <tr>
+               <th>#</th>
+               <th>Descripcion</th>
+               <th>Detalles</th>
+               <th>U. Medida</th>
+               <th>Stock</th>
+               <th>Acciones</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for a in data %}
+            <tr>
+               <td>{{a.id}}</td>
+               <td>{{a.descripcion}}</td>
+               <td>{{a.detalles}}</td>
+               <td>{{a.umedida}}</td>
+               <td>{{a.cantidad}}</td>
+               <td>
+                  <a href="edit/{{a.id}}"> <button class="btn btn-warning btn-sm">Edit</button> </a>
+                  <a href="delete/{{a.id}}" onclick="return confirmar()"> <button
+                        class="btn btn-danger btn-sm">Delete</button>
+               </td></a>
+            </tr>
+
+            {% endfor %}
+
+         </tbody>
+      </table>
+
+   </div>
+</div>
+
+{% endblock content %}

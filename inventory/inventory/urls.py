@@ -1,4 +1,4 @@
-"""proy1 URL Configuration
+"""inventory URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -14,19 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from proy1.views import saludo, despedida, fecha, edad , pl_externa, fecha_actual, advanceView
+from app_inventario.views import index, articulos, movimientos, listados
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hola/<nombre>/<int:edad>', saludo ),
-    path('chau/<nombre>/<int:edad>', despedida ),
-    path('fecha/', fecha ),
-    path('edad/<int:edad>/<int:anio>', edad ),
-    path('externa', pl_externa ),
-    path('factual', fecha_actual ),
-    path('advance', advanceView ),
-   
-    
+    path('', index),
+    path('articulos/', articulos),
+    path('movimientos/', movimientos),
+    path('listados/', listados),
+    path('', include('app_inventario.urls')),
+
 ]
