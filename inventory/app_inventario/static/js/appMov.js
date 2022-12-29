@@ -1,31 +1,29 @@
 $(document).ready(function () {
-
+    let arrayMovimientos = []    
     movDate.focus()
 
     const getDato = async ()=>{
         let id=selectArticulo.value
         let response = await fetch(`getOneArticle/${id}`)
         let data = await response.json()
-        console.log(data)
+        return data
     }
 
-    selectArticulo.addEventListener('change',()=>{
-        console.log('buscando')
-        datos = getDato()
-        console.log(datos.articulo['id']);
+    selectArticulo.addEventListener('change', async ()=>{
+        datos = await getDato()
+        umedida.value = datos.umedida
+        cantidad.focus()
     })
 
 
-    let arrayMovimientos = []    
-    $('#agregarRenglon').click(function (e) {
+    agregarRenglon.addEventListener('click', (function (e) {
         e.preventDefault();
-        let idArt = $('#articulo').val();
-        let descArt = $('#articulo option:selected').text();
-
-        let cant = $('#cantidad').val();
-        let um = $('#umedida').val();
-        arrayMovimientos.push([idArt, descArt, cant])
-
+        let idArt = selectArticulo.options[selectArticulo.selectedIndex].value
+        let descArt = selectArticulo.options[selectArticulo.selectedIndex].text
+        let unid = umedida.value
+        let cant = cantidad.value
+        arrayMovimientos.push([idArt, descArt, unid, cant])
+        
         let contenidoTabla = document.getElementById('tbodyMovimientos')
         contenidoTabla.innerHTML = ""        
         arrayMovimientos.forEach((element) => {
@@ -34,11 +32,12 @@ $(document).ready(function () {
                                 <td>${element[0]}</td>
                                 <td>${element[1]}</td>
                                 <td>${element[2]}</td>
+                                <td>${element[3]}</td>
                             </tr>
             `
         })
 
-    });
+    }));
 
 
 });

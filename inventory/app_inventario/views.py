@@ -4,7 +4,7 @@ from django.db.models import Max
 from datetime import datetime
 import sqlite3
 
-from app_inventario.models import Articulos, Movimientos1
+from app_inventario.models import Umedida, Articulos, Movimientos1
 # Create your views here.
 
 def index(request):
@@ -77,13 +77,20 @@ def movimientos(request):
     return render(request, 'movimientos.html', context)
 
 def getOneArticle(request, id):
-    art=Articulos.objects.filter(id=id).values('id','descripcion','umedida_id')
-    print(art)
+    # art=Articulos.objects.filter(id=id).values('id','descripcion','umedida_id', 'umedida')  
+    art=Articulos.objects.filter(id=id).values()
+    umedida=art[0]['umedida_id']
+    umedida_text = Umedida.objects.get(id=umedida)
+    
+    print("------------------------------------------")
+    print(umedida_text)
+    # for obj in art:
+    #         print(obj['id'])
+
     lista=list(art)
     print(lista)
 
-        
-    return JsonResponse({'articulo':lista[0]})
+    return JsonResponse({"articulo":lista[0], "umedida":f"{umedida_text}"})
 
 
 
