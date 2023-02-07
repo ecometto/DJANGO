@@ -81,19 +81,24 @@ def getOneArticle(request, id):
     art=Articulos.objects.filter(id=id).values()
     umedida=art[0]['umedida_id']
     umedida_text = Umedida.objects.get(id=umedida)
-    
-    print("------------------------------------------")
-    print(umedida_text)
+ 
     # for obj in art:
     #         print(obj['id'])
 
     lista=list(art)
-    print(lista)
-
     return JsonResponse({"articulo":lista[0], "umedida":f"{umedida_text}"})
 
 
+import json
+def confirmarMovimiento(request):
+  if request.method == 'POST':
+    print('llega hasta caca?')
+    array_as_string = request.POST['data']
+    my_array = json.loads(array_as_string)
 
 
+
+
+# -------------------- FUNCIONES DE LISTADO 
 def listados(request):
     return render(request, 'listados.html', {"titulo":"listados"})

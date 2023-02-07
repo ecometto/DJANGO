@@ -17,14 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 
-from .views import art_delete, art_edit, getOneArticle
+from .views import art_delete, art_edit, getOneArticle, confirmarMovimiento
 
 urlpatterns = [
     path('articulos/delete/<int:id>', art_delete),
     path('articulos/edit/<int:id>', art_edit),
     path('movimientos/getOneArticle/<int:id>', getOneArticle),
-
+    path('movimientos/confirmarMovimiento/', confirmarMovimiento),
     
-    
-
 ]
