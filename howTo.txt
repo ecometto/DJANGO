@@ -18,15 +18,7 @@ Luego ejecutar el servidor "de pruebas": python manage.py runserver
 # CONFIGURANDO VISTAS Y RUTAS
 crear archivo views.py.  importar los siguientes modulos: 
 from django.shorcuts import render 
-luego return render(request, 'plantilla.html', params in dictionary)
--obsoleto- from django.http import HttpResponse
--obsoleto -from django.template import loader
-
-Generar funciones que recibirán el parámetro "request" y retornarán un HttpResponse("algo").
-    def fecha_actual(request):
-        plantilla = loader.get_template('documento.html')
-        doc = plantilla.render({"nombre":"mi_nombre", "usuario":"my_usuario"})   #(aqui se "pasan" variables al documento para ser usados con jinja)
-        return HttpResponse(doc)
+luego generar function(request) que retorna "return render(request, 'plantilla.html', params in dictionary)"
 (tener en cuenta de agregar la ruta absoluta en "DIRS" en "TEMPLATES" del archivo de configuración)
 ej: 'DIRS': ["C:/xampp/htdocs/PROGRAMACION/DJANGO/proy1/proy1/templates"],
 
