@@ -7,30 +7,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- leaflet  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <!-- Personal Styles  -->
     <link rel="stylesheet" href="{% static 'css.css' %}">
+
     <title>Document</title>
 </head>
+
 <body>
     <h1>PROBANDO DJANGO (RECORDANDO) </h1>
     <OL>REPASO DE:
-        <li>creación de  proyecto, previo tener instalado django (pip install django), con python manage.py startproject</li>
+        <li>creación de proyecto, previo tener instalado django (pip install django), con python manage.py startproject
+        </li>
         <li>creación de APPs del proyecto, con python manage.py startapp </li>
         <li>inclusión de la APP creada, en el archivo config de la raiz</li>
         <li>creación de views.py para incluir vistas (from django.shortcuts import render). <br>
-            Se crea una función (def) para cada vista y se incluye el parámetro "request". <br> 
+            Se crea una función (def) para cada vista y se incluye el parámetro "request". <br>
             Se retorna render(request,'template.html', parametros en formato diccionario) </li>
         <li>creación de carpeta "templates" dentro de la app</li>
-        <li>para uso de plantilla base se debe inlcuir .. extends 'base.html'.. entre { y %  y completar entre los bloques ..block nombre..endblock nombre.. entre { y % (abrir y cerrar)</li>
-        <li>para "incrustar" un código html desde otro archivo, se agrega ..include 'components/nav.html'.. entre { y %</li>
+        <li>para uso de plantilla base se debe inlcuir .. extends 'base.html'. y completar los bloques (block
+            nombre..endblock) nombre.. cerrar)</li>
+        <li>para "incrustar" un código html desde otro archivo, se agrega ..include 'components/nav.html'.. entre { y %
+        </li>
         <li>creación de la carpeta "static" e inclusión dentro de la app</li>
-        <li>inclusión de archivos css y js en el template base. href="..static 'nombre de archivo'.. entre { y %. Se debe incluir ..load static.. entre { y %  al comienzo del documento'</li>
+        <li>inclusión de archivos css y js en el template base. href="..static 'nombre de archivo'.. entre { y %. Se
+            debe incluir ..load static.. entre { y % al comienzo del documento'</li>
         <li>para generar la base de datos se debe ejecutar 'manage.py make migrations' + 'manage.py migrate'</li>
 
     </OL>
-    <img src="{% static 'img/config.png' %}" alt="">
-    <p>Tu nombre es {{nombre}} y tu edad {{edad}}</p>
+    <!-- <img src="{% static 'img/config.png' %}" alt=""> -->
+    <p>Tu nombre es {{nombre}} y tu edad {{edad}}</p>}
 
+    <h3>datos del ISS</h3>
+    <p>longitud: <span id="lng">Cargando...</span></p>
+    <p>latitud: <span id="lat">Cargando...</span></p>
+    <div id="map">
+
+    </div>
+
+
+    <!-- leaflet  -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
 
     <script src="{% static 'app.js' %}"></script>
 </body>
+
 </html>
