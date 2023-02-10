@@ -2,4 +2,7 @@ body{
     background-color: blueviolet;
 }
 
-#map { height: 360px; }
+#map { 
+    height: 360px; 
+    margin-bottom: 50px;
+}

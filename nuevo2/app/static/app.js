@@ -12,17 +12,18 @@ function getData() {
         .then(res => res.json())
         .then(data => {
             // console.log(data)
+            if (newMarker){
+                map.removeLayer(newMarker)
+                oldMarker = L.marker([(lat), (lng)], {opacity : 0.1 , icon : grayCircle }).addTo(map);
+            }
             lng = data.iss_position.longitude
             lat = data.iss_position.latitude
             console.log("longitud: ");
             console.log(lng);
             lngElement.innerText = lng
             latElement.innerText = lat
-            if (marker){
-                map.removeLayer(marker)
-            }
-            var marker = L.marker([lat, lng]).addTo(map)
 
+            newMarker = L.marker([lat, lng], {opacity : 1, title : "International Spacial Station (ISS) \nCurrent Position" }).addTo(map)
         }
         )
 }
@@ -32,7 +33,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // maxZoom: 31,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+var oldMarker = null
+var newMarker = null
 
+
+var grayCircle = L.icon({
+    iconUrl: "/static/img/circulo.png",
+    iconSize:     [20, 20], // size of the icon
+});
 
 getData()
 setInterval(() => {
