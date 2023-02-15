@@ -11,19 +11,22 @@ function getData() {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
-            if (newMarker){
+            console.log(data)
+            if (newMarker) {
                 map.removeLayer(newMarker)
-                oldMarker = L.marker([(lat), (lng)], {opacity : 0.1 , icon : grayCircle }).addTo(map);
+                oldMarker = L.marker([(lat), (lng)], { opacity: 0.1, icon: grayCircle }).addTo(map);
+                oldMarker.bindPopup(`Latitud: ${lat}, longitud: ${lng} <br>${fecha}`)
             }
             lng = data.iss_position.longitude
             lat = data.iss_position.latitude
-            console.log("longitud: ");
-            console.log(lng);
             lngElement.innerText = lng
             latElement.innerText = lat
 
-            newMarker = L.marker([lat, lng], {opacity : 1, title : "International Spacial Station (ISS) \nCurrent Position" }).addTo(map)
+            fechaTT = new Date(data.timestamp*1000)
+            fecha=fechaTT.getDate()+"/"+fechaTT.getMonth()+"/"+fechaTT.getFullYear()+" - "+fechaTT.getHours()+":"+fechaTT.getMinutes()+":"+fechaTT.getSeconds()
+            newMarker = L.marker([lat, lng], { opacity: 1, title: "International Spacial Station (ISS) \nCurrent Position" }).addTo(map)
+            newMarker.bindPopup(`Latitud: ${lat}, longitud: ${lng} \n${fechaTT}`)
+            // marker.bindPopup(popupContent).openPopup();
         }
         )
 }
@@ -39,7 +42,7 @@ var newMarker = null
 
 var grayCircle = L.icon({
     iconUrl: "/static/img/circulo.png",
-    iconSize:     [20, 20], // size of the icon
+    iconSize: [20, 20], // size of the icon
 });
 
 getData()
